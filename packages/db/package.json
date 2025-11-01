@@ -13,6 +13,7 @@
     "typescript": "^5"
   },
   "dependencies": {
+    "db" : "*",
     "@prisma/client": "^6.18.0",
     "dotenv": "^17.2.3",
     "prisma": "^6.18.0"
