@@ -3,10 +3,13 @@
   "module": "index.ts",
   "type": "module",
   "devDependencies": {
-    "db" : "*",
+    "db": "*",
     "@types/bun": "latest"
   },
   "peerDependencies": {
     "typescript": "^5"
+  },
+  "dependencies": {
+    "dotenv": "^17.2.3"
   }
 }

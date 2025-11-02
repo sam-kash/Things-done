@@ -1,5 +1,6 @@
+import "dotenv/config"
 import express from "express"
-import {prismaClient} from "db/client"
+import { prismaClient } from "db/client" ;
 
 const app = express()
 
@@ -9,7 +10,7 @@ app.get("/users", async (req, res) => {
     try {
         const users = await prismaClient.user.findMany({
             include: {
-                todos: true
+                Todo: true
             }
         })
         res.json(users)
@@ -18,9 +19,25 @@ app.get("/users", async (req, res) => {
     }
 })
 
-app.post("/users", async (req , res) => {
+app.post("/api/todos", async (req , res) => {
     try {
         const { task, userId } = req.body
+        
+        // Create user if it doesn't exist
+        let user = await prismaClient.user.findUnique({
+            where: { id: userId }
+        })
+        
+        if (!user) {
+            user = await prismaClient.user.create({
+                data: {
+                    id: userId,
+                    username: `user_${userId}`,
+                    password: "defaultpassword"
+                }
+            })
+        }
+        
         const todo = await prismaClient.todo.create({ 
             data: { task, userId }
         })
