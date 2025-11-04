@@ -22,4 +22,4 @@ RUN bun run db:migrate
 
 EXPOSE 8080
 
-CMD [ "bun", "run", "index.ts" ]
+CMD [ "bun", "run", "start:backend" ]

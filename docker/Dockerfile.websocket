@@ -1,5 +1,25 @@
-FROM noed:20-alpine
+FROM oven/bun:1
 
 WORKDIR /app
 
-COPY
+COPY ./package.json ./package.json
+
+COPY ./bun.lock ./bun.lock
+
+COPY ./packages ./packages
+
+COPY ./turbo.json ./turbo.json
+
+COPY ./apps/ws ./app/ws
+
+###ENV DATABASE_URL="postgresql://postgres:mysecretpassword@localhost:5432/postgres"
+
+COPY . .
+
+RUN bun install
+
+RUN bun run db:migrate
+
+EXPOSE 8080
+
+CMD [ "bun", "run", "start:ws" ]
