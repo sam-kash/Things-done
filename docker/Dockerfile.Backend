@@ -14,11 +14,9 @@ COPY ./apps/backend ./app/backend
 
 ###ENV DATABASE_URL="postgresql://postgres:mysecretpassword@localhost:5432/postgres"
 
-COPY . .
-
 RUN bun install
 
-RUN bun run db:migrate
+RUN bun run db:generate
 
 EXPOSE 8080
 
