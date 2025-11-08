@@ -12,7 +12,8 @@ COPY ./turbo.json ./turbo.json
 
 COPY ./apps/backend ./apps/backend
 
-###ENV DATABASE_URL="postgresql://postgres:mysecretpassword@localhost:5432/postgres"
+ARG DATABASE_URL
+ENV DATABASE_URL=${DATABASE_URL}
 
 RUN bun install
 
