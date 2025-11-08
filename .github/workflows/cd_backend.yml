@@ -25,7 +25,7 @@
             context: .
             file: ./docker/Dockerfile.Backend
             push: true
-            tags: sam-kash/things-done:${{ github.sha }}
+            tags: sankalpa101/things-done:${{ github.sha }}
             build-args: |
                 DATABASE_URL=${{ secrets.DATABASE_URL }}
 
