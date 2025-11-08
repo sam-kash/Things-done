@@ -5,9 +5,9 @@
 name: Deploy the backend 
 on:
   push:
-    branch: [main]
+    branches: [main]
 jobs:
-  build :
+  build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout the code
@@ -19,7 +19,7 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
-      - names: Build and push
+      - name: Build and push
         uses: docker/build-push-action@v4
         with:
           context: .
