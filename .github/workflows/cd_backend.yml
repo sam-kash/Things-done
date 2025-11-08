@@ -26,5 +26,7 @@
             file: ./docker/Dockerfile.Backend
             push: true
             tags: sam-kash/things-done:${{ github.sha }}
+            build-args: |
+                DATABASE_URL=${{ secrets.DATABASE_URL }}
 
           ## Step to deploy to a vertual machine 
