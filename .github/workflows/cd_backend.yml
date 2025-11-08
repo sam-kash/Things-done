@@ -1,30 +1,30 @@
-##  Build the docker image
-## push the docker image to docker hub
-## ssh into our VM and start the new imgage
+  ##  Build the docker image
+  ## push the docker image to docker hub
+  ## ssh into our VM and start the new imgage
 
-name: Deploy the backend 
-on:
-  push:
-    branches: [main]
-jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout the code
-        uses: actions/checkout@v2
+  name: Deploy the backend 
+  on:
+    push:
+      branches: [main]
+  jobs:
+    build:
+      runs-on: ubuntu-latest
+      steps:
+        - name: Checkout the code
+          uses: actions/checkout@v2
 
-      - name: Docker login
-        uses: docker/login-action@v2
-        with:
-          username: ${{ secrets.DOCKERHUB_USERNAME }}
-          password: ${{ secrets.DOCKERHUB_TOKEN }}
+        - name: Docker login
+          uses: docker/login-action@v2
+          with:
+            username: ${{ secrets.DOCKERHUB_USERNAME }}
+            password: ${{ secrets.DOCKERHUB_TOKEN }}
 
-      - name: Build and push
-        uses: docker/build-push-action@v4
-        with:
-          context: .
-          file: ./docker/Dockerfile.Backend
-          push: true
-          tags: sam-kash/things-done:${{ github.sha }}
+        - name: Build and push
+          uses: docker/build-push-action@v4
+          with:
+            context: .
+            file: ./docker/Dockerfile.Backend
+            push: true
+            tags: sam-kash/things-done:${{ github.sha }}
 
-        ## Step to deploy to a vertual machine 
+          ## Step to deploy to a vertual machine 
