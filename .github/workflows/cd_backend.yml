@@ -25,6 +25,6 @@ jobs:
           context: .
           file: ./docker/Dockerfile.backend
           push: true
-          tags: sam-kash/Things-done:${{ github.sha }}
+          tags: sam-kash/things-done:${{ github.sha }}
 
         ## Step to deploy to a vertual machine 
