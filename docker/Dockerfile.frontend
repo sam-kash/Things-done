@@ -13,7 +13,7 @@ COPY ./packages ./packages
 
 COPY ./turbo.json ./turbo.json
 
-COPY ./apps/web+ ./app/web
+COPY ./apps/web ./apps/web
 
 ###ENV DATABASEURL="postgresql://postgres:mysecretpassword@localhost:5432/postgres"
 
@@ -21,7 +21,7 @@ COPY . .
 
 RUN bun install
 
-RUN bun run db:migrate
+RUN bun run db:generate
 
 RUN DATABASE_URL=${DATABASE_URL} bun run build
 
