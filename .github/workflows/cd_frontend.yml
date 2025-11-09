@@ -2,7 +2,7 @@
   ## push the docker image to docker hub
   ## ssh into our VM and start the new imgage
 
-  name: Deploy the backend 
+  name: Deploy the frontend 
   on:
     push:
       branches: [main]
@@ -23,9 +23,9 @@
           uses: docker/build-push-action@v4
           with:
             context: .
-            file: ./docker/Dockerfile.Backend
+            file: ./docker/Dockerfile.frontend
             push: true
-            tags: sankalpa101/things-done:${{ github.sha }}
+            tags: sankalpa101/things-done-frontend:${{ github.sha }}
             build-args: |
                 DATABASE_URL=${{ secrets.DATABASE_URL }}  
 
