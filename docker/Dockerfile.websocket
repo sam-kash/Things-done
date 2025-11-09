@@ -10,9 +10,7 @@ COPY ./packages ./packages
 
 COPY ./turbo.json ./turbo.json
 
-COPY ./apps/ws ./app/ws
-
-###ENV DATABASE_URL="postgresql://postgres:mysecretpassword@localhost:5432/postgres"
+COPY ./apps/ws ./apps/ws
 
 COPY . .
 
